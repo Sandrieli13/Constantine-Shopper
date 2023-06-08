@@ -1,6 +1,6 @@
 node_modules
 .env
-build/bundle.js
-build/bundle.js.map
-build/bundle.js.LICENSE.txt
+public/bundle.js
+public/bundle.js.map
+public/bundle.js.LICENSE.txt
 package-lock.json
