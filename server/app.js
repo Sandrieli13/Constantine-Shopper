@@ -23,11 +23,11 @@ app.use("/api", require("./api"));
 app.use("/create-payment-intent", require("./api/payment"));
 
 app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "..", "public/index.html"))
+  res.sendFile(path.join(__dirname, "..", "build/index.html"))
 );
 
 // static file-serving middleware
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "..", "build")));
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
 // sends index.html
 app.use("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public/index.html"));
+  res.sendFile(path.join(__dirname, "..", "build/index.html"));
 });
 
 // error handling endware
