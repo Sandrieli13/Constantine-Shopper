@@ -4,7 +4,7 @@
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build -- --watch --mode=development",
+    "build": "webpack -- --watch --mode=development",
     "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
     "start": "npm run build:dev & npm run start-server",
