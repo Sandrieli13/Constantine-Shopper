@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
 import SignUp from "../features/auth/SignUp";
 import Home from "../features/home/Home";
-import Products from "../features/productsBeta/index";
+import Products from "../features/products/index";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import { fetchAllProducts } from "../features/products/productsSlice";
 import Users from "../features/users/Users";
