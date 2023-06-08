@@ -36644,7 +36644,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
   The AuthForm component can be used for Login or Sign Up.
-  Props for Login: name="login", displayName="Login"
+  Props for Login: name="login", displayName="Login
   Props for Sign up: name="signup", displayName="Sign Up"
 **/
 
