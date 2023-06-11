@@ -5,6 +5,7 @@ module.exports = router
 // GET /api/products
 router.get('/', async (req, res, next) => {
   try {
+    console.log('Fetching products from the database');
     const products = await Product.findAll({
       order: ['id']
     })
