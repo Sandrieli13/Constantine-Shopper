@@ -9,15 +9,13 @@ app.get("/config", (req, res) => {
   });
 });
 
-module.exports = app;
-
-// logging middleware
+// Logging middleware
 app.use(morgan("dev"));
 
-// body parsing middleware
+// Body parsing middleware
 app.use(express.json());
 
-// auth and api routes
+// Auth and API routes
 app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
 app.use("/create-payment-intent", require("./api/payment"));
@@ -26,10 +24,10 @@ app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
 );
 
-// static file-serving middleware
+// Static file-serving middleware
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-// any remaining requests with an extension (.js, .css, etc.) send 404
+// Handle requests with an extension (.js, .css, etc.) - send 404
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error("Not found");
@@ -40,14 +38,16 @@ app.use((req, res, next) => {
   }
 });
 
-// error handling endware
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err);
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-// sends index.html
+// Send index.html for any remaining requests
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public/index.html"));
 });
+
+module.exports = app;
