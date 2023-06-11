@@ -16,10 +16,12 @@ if(process.env.LOGGING === 'true'){
 if(process.env.DATABASE_URL){
   config.dialectOptions = {
     ssl: {
-      rejectUnauthorized: false
+      require: true,
+      rejectUnauthorized: false // You can set this to true if you have the CA certificate
     }
   };
 }
+
 
 const db = new Sequelize(
   process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`, config)
