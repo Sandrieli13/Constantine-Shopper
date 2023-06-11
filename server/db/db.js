@@ -5,7 +5,7 @@ const pkg = require('../../package.json')
 const databaseName = process.env.DATABASE_URL
 
 const config = {
-  logging: false
+  logging: true
 };
 
 if(process.env.LOGGING === 'true'){
