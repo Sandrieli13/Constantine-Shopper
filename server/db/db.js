@@ -1,12 +1,11 @@
 require('dotenv').config()
 const Sequelize = require('sequelize')
 const pkg = require('../../package.json')
-const { createClient } = require('@supabase/supabase-js');
 
 const databaseName = process.env.DATABASE_URL
 
 const config = {
-  logging: true
+  logging: console.log
 };
 
 if(process.env.LOGGING === 'true'){
@@ -29,9 +28,5 @@ const db = new Sequelize(
 
 
 
-// Supabase configuration
-const supabaseUrl = process.env.DATABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
-module.exports = db, supabase;
+module.exports = db;

@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const { models: { Product }, supabase } = require('../db');
+const { models: { Product }} = require('../db');
+
 
 // GET /api/products
 router.get('/', async (req, res, next) => {
   try {
-    console.log('Fetching products from Supabase');
-    const { data, error } = await supabase.from('products').select('*');
-    if (error) {
-      throw new Error(error.message);
-    }
-    res.json(data);
+    console.log('Fetching products from the database');
+    const products = await Product.findAll({
+      order: ['id']
+    });
+    res.json(products);
   } catch (err) {
     next(err);
   }
@@ -18,15 +18,11 @@ router.get('/', async (req, res, next) => {
 // POST /api/products
 router.post('/', async (req, res, next) => {
   try {
-    const product = await supabase.from('products').insert(req.body);
-    if (product.error) {
-      throw new Error(product.error.message);
-    }
-    res.status(201).send(product.data);
+    const product = await Product.create(req.body);
+    res.status(201).send(product);
   } catch (err) {
     console.log(err);
     next(err);
   }
 });
-
 module.exports = router;
