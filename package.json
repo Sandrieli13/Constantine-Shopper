@@ -27,6 +27,7 @@
     "@mui/material": "^5.11.11",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.44.1",
+    "@supabase/supabase-js": "^2.24.0",
     "@vercel/postgres": "^0.3.0",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
