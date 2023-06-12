@@ -3,19 +3,6 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
-// API routes
-const usersRouter = require('./api/users');
-const productsRouter = require('./api/products');
-
-app.use('/api/users', usersRouter);
-app.use('/api/products', productsRouter);
-
-app.get("/config", (req, res) => {
-  res.send({
-    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-  });
-});
-
 // Logging middleware
 app.use(morgan("dev"));
 
@@ -32,7 +19,12 @@ app.use((req, res, next) => {
 app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
 app.use("/create-payment-intent", require("./api/payment"));
+app.use("/api/users", require("./api/users"));
+app.use("/api/products", require("./api/products"));
+app.use("/api", require("./api"));
+app.use("/create-payment-intent", require("./api/payment"));
 
+// Serve index.html for the root path
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
 );
@@ -58,9 +50,11 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-// Send index.html for any remaining requests
-app.use("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public/index.html"));
+// Catch-all route - send 404 for any other requests
+app.use((req, res) => {
+  const err = new Error("Not found");
+  err.status = 404;
+  next(err);
 });
 
 module.exports = app;
