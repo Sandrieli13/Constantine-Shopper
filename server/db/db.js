@@ -29,7 +29,7 @@ const db = new Sequelize(
 
 
 
-  // Supabase configuration
+// Supabase configuration
 const supabaseUrl = process.env.DATABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
