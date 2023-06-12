@@ -51,7 +51,7 @@ app.use((req, res, next) => {
 });
 
 // Catch-all route - send 404 for any other requests
-app.use((req, res) => {
+app.use((req, res, next) => {
   const err = new Error("Not found");
   err.status = 404;
   next(err);
