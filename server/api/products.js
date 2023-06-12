@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { models: { Product }} = require('../db');
-module.exports = router;
+
 
 // GET /api/products
 router.get('/', async (req, res, next) => {
@@ -25,3 +25,4 @@ router.post('/', async (req, res, next) => {
     next(err);
   }
 });
+module.exports = router;
