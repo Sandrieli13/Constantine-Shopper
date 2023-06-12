@@ -1,4 +1,4 @@
-const  db  = require('./db')
+const { db } = require('./db')
 const PORT = process.env.PORT
 const app = require('./app')
 const seed = require('../script/seed');
