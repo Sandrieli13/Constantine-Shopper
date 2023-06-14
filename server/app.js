@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
-// Logging middlewaredd
+// Logging middleware
 app.use(morgan("dev"));
 
 // Body parsing middleware
